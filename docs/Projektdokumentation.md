@@ -12,6 +12,8 @@ When calling the script only two params are needed. The location of the director
 
 To define the directory use the `-d` tag and with `-o` it is possible to define the location, name and file ending of the output file. By default the file gets put into the current working directory named `gitLog.csv`.
 
+This script can be called using the following command `script.py -o /home/root/result.txt -d /home/root/Downloads`. 
+
 TODO: schreiben sie wie die Skripte aufgerufen werden sollen (d.h. welche Parameter werden übergeben, gibt es Interaktionen mit dem Skript, läuft es automatisch täglich ab?)
 
 ### Ablauf der Automation
