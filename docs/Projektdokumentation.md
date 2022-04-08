@@ -7,6 +7,11 @@ Anhand der Analyse wurde folgendes Lösungsdesign entworfen.
 
 ### Aufruf der Skripte
 
+### Script 1
+When calling the script, only the destination directory must be specified. You can define the destination where the target directory will be located with `-d`  (Base directory) tag. With the `-p` tag you can add your SSH Key passphrase.
+
+If you want it to be called regularly, you can define the script in a CronJob.
+
 ### Script 2
 When calling the script only two params are needed. The location of the directory that contains the cloned repositories and name of the output file. 
 
@@ -14,18 +19,29 @@ To define the directory use the `-d` tag and with `-o` it is possible to define 
 
 This script can be called using the following command `script.py -o /home/root/result.txt -d /home/root/Downloads`. 
 
-TODO: schreiben sie wie die Skripte aufgerufen werden sollen (d.h. welche Parameter werden übergeben, gibt es Interaktionen mit dem Skript, läuft es automatisch täglich ab?)
-
 ### Ablauf der Automation
 The following section shows the UML Activity Diagrams of our scripts.
+
 ### Script 1
+
+![Activity Script 1](../images/activity_script_1.png) 
 
 ### Script 2
 
 ### Konfigurationsdateien
-The following section shows the configuration file that is used to run both of our scripts.
 
-TODO: Definieren sie welche Parameter in welchen Konfigurationsdateien gespeichert werden.
+### Script 1 
+
+The configuration file can be found under `etc/`. It is called `gitrepo.conf`.  There is also a `gitrepo.conf.sample` file. 
+
+The following must be in the config file.
+
+```
+git@github.com:dmtbz/m122_mitrovic_mohammed.git Danilo_Mitrovic_Mahbube_Shafin_Mohammed
+<git_repo_url> <directory_name>
+
+```
+
 
 ## Abgrenzungen zum Lösungsdesign
 
