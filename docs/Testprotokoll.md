@@ -1,8 +1,11 @@
 Skript 1
 
-| Testfall | Testbeschreibung | Testdaten | erwartetes Testresultat | erhaltenes Testresultat | Tester | Testdatum und Teststatus |
-|  - | - | - | - | - | - | - |
-| Erstmaliger Aufruf | Das Skript soll mit einem input file aufgerufen werden, in welchem nur verfügbare Git-URLs sind. Diese sollen in ein noch nicht existierendes Verzeichnis geklont werden:<pre>skript1.bash repolist.txt /tmp/myrepos</pre> | repolist.txt mit folgendem Inhalt:<pre>https://gitlab.com/armindoerzbachtbz/m122_praxisarbeit<br>https://gitlab.com/wapdc/InfoSearch/Project-2017</pre> | Verzeichnis wird erstellt und alle Repos werden darin geklont | | | |
+| test number | testcase | test description | test preset | test data | expected test result | received test result | tester | testdate and test status |
+| - | - | - | - | - | - | - | - | - |
+| 1. | Wrong `-d` parameter | The script should be called with the parameter -d, but a wrong directory is given, one that does not exist. The program should detect the wrong directory and display an error message and also log the error to the log file. | The script should be installed correctly according to the documetation and the configuration file should be configured correctly. |  `git_clone_update_repos.sh -d /docs/myspace/gitrepository` In case this directory exists `/docs/myspace/gitrepository` you can replace it with another directory. | This should be the output: `Error path: don't exists, please create or enter the right path` | RECEIVED TESTRESULT | TESTER |
+| 2. | Right configuration file | The configuration file is filled with correct data. | The script should be installed correctly according to the documetation. | Hte config file should have following data for test porposes: ``` ``` |
+
+Cloning creating new repository
 
 
 Skript 2
