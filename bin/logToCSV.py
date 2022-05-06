@@ -1,4 +1,5 @@
 #! /bin/python3
+from re import sub
 from git import Repo
 import csv
 import os
@@ -32,30 +33,39 @@ def dtToDateString(datetime):
     return "".join(dateStr)
 
 
-my_list = os.listdir(TARGET_DIRECTORY)
+def validate_target_dir(target_dir):
+    if os.path.isdir(target_dir) == False:
+        print(target_dir + ' is an invalid directory exit')
+        exit()
 
-for dire in my_list:
-    directory = TARGET_DIRECTORY + dire
+
+validate_target_dir(TARGET_DIRECTORY)
+sub_target_dirs = os.listdir(TARGET_DIRECTORY)
+
+for subdir in sub_target_dirs:
+    directory = TARGET_DIRECTORY + subdir
     if os.path.isdir(directory):
 
         try:
-            repo = Repo(directory)
+            Repo(directory)
         except:
-            print(dire, "is not a valid git repo")
+            print(subdir, "is not a valid git repo, skipping")
             continue
 
         repo = Repo(directory)
+
+        # check if repo has any commits
+        try:
+            repo.iter_commits()
+        except:
+            print(subdir, " has no commits yet, skipping")
+            continue
+
         commits = list(repo.iter_commits())
 
         for commit in commits:
-            row = []
-
-            row.append(dire)
-            row.append(dtToDateString(commit.authored_datetime))
-            row.append(commit.hexsha)
-            row.append(commit.author)
-
-            rows.append(row)
+            rows.append([subdir, dtToDateString(
+                commit.authored_datetime), commit.hexsha, commit.author])
 
 
 with open(str(OUTPUT_LOCATION), 'w') as csvfile:
