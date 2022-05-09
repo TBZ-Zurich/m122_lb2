@@ -4,7 +4,7 @@ from git import Repo
 import csv
 import os
 import argparse
-from logger import logInformation, logWarning
+from logger import logInformation, logWarning, logError
 
 
 FIELDS = ["Zielverzeichnis", "Datum", "Commit-Hash", "Author"]
@@ -35,7 +35,7 @@ def dtToDateString(datetime):
 
 def validate_target_dir(target_dir):
     if os.path.isdir(target_dir) == False:
-        print(target_dir + 'is an invalid directory, exit')
+        logError(target_dir + 'is an invalid directory, exit')
         exit()
 
 

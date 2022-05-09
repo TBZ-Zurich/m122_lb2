@@ -31,3 +31,10 @@ def logWarning(warning):
 
     print(logString)
     logger.info(logString)
+
+
+def logError(error):
+    logString = "ERROR: " + error
+
+    print(logString)
+    logger.info(logString)
