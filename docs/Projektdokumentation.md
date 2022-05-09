@@ -8,7 +8,7 @@ Anhand der Analyse wurde folgendes Lösungsdesign entworfen.
 ### Aufruf der Skripte
 
 ### Script 1
-When calling the script, only the destination directory must be specified. You can define the destination where the target directory will be located with `-d`  (Base directory) tag. With the `-p` tag you can add your SSH Key passphrase.
+When calling the script, only the destination directory must be specified. You can define the destination where the target directory will be located with `-d`  (Base directory) tag. 
 
 If you want it to be called regularly, you can define the script in a CronJob.
 
