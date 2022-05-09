@@ -1,4 +1,4 @@
-import argparse, os, git
+import argparse, os, git, logger, shutil, glob
 from git import Repo
 
 
@@ -7,7 +7,7 @@ from git import Repo
 parser = argparse.ArgumentParser(description="This clones all your git repos to your doirectory",
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("-d", "--dir",
-                    help="You can enter your base directory here", required=FALSE)
+                    help="You can enter your base directory here", required=True)
 args = parser.parse_args()
 BASE_DIR = args.dir
 
@@ -31,3 +31,12 @@ with open("gitclone.config") as config_file:
             g.pull()
         elif not os.path.isdir(BASE_DIR + '/' + config_line[1]):
             Repo.clone_from(config_line[0], BASE_DIR + '/' +config_line[1])
+
+    dir_list = os.listdir(BASE_DIR + '/') 
+    print(dir_list)
+    for count in dir_list:
+        print(count)
+        if not(count in config_file.read()):
+            print("not avaiilble")
+        else:
+            print("not avaiulble") 
