@@ -75,5 +75,3 @@ with open(str(OUTPUT_LOCATION), 'w') as csvfile:
     csvwriter.writerow(FIELDS)
 
     csvwriter.writerows(rows)
-
-logInformation('FILE SAVED ')
