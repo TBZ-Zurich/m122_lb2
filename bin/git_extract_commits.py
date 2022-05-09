@@ -26,6 +26,8 @@ args = parser.parse_args()
 OUTPUT_LOCATION = args.Output
 TARGET_DIRECTORY = args.Directory
 
+# convert datetime to string
+
 
 def dtToDateString(datetime):
     dateStr = ["%s" % datetime.year,
@@ -33,6 +35,7 @@ def dtToDateString(datetime):
     return "".join(dateStr)
 
 
+# check wether the target directory is an actual directory
 def validate_target_dir(target_dir):
     if os.path.isdir(target_dir) == False:
         logError(target_dir + 'is an invalid directory, exit')
@@ -46,6 +49,7 @@ for subdir in sub_target_dirs:
     directory = TARGET_DIRECTORY + subdir
     if os.path.isdir(directory):
 
+        # check if directory is a git repo
         try:
             Repo(directory)
         except:
@@ -61,16 +65,20 @@ for subdir in sub_target_dirs:
             logWarning(subdir + "has no commits yet, skipping")
             continue
 
+        # extract commits from repo to list
         commits = list(repo.iter_commits())
 
+        # append commits to global array with all commits of all repos
         for commit in commits:
             rows.append([subdir, dtToDateString(
                 commit.authored_datetime), commit.hexsha, commit.author])
 
 
+# write global array with all commits
 with open(str(OUTPUT_LOCATION), 'w') as csvfile:
     csvwriter = csv.writer(csvfile)
 
+    # write CSV header
     csvwriter.writerow(FIELDS)
 
     csvwriter.writerows(rows)
