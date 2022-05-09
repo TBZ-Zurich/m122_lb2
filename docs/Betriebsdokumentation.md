@@ -4,7 +4,7 @@
 
 This script clones all repositories if they are not present. If they are present, the corresponding repository is fetched.
 
-TODO: @Loris
+When the repository is fetched 
 
 ## Installationsanleitung für Administratoren
 
