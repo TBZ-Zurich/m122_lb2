@@ -9,7 +9,6 @@ from logger import logInformation, logWarning
 
 FIELDS = ["Zielverzeichnis", "Datum", "Commit-Hash", "Author"]
 
-FILENAME = "gitlogs.csv"
 TARGET_DIRECTORY = ''
 CWD = os.getcwd()
 rows = []
@@ -18,7 +17,7 @@ rows = []
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "-o", "--Output", help="Ouput location and filename", default="gitlogs.csv")
+    "-o", "--Output", help="Ouput location and filename", default="./gitlogs.csv")
 parser.add_argument("-d", "--Directory",
                     help="Target directory with the git repos", required=True)
 
@@ -36,7 +35,7 @@ def dtToDateString(datetime):
 
 def validate_target_dir(target_dir):
     if os.path.isdir(target_dir) == False:
-        print(target_dir + ' is an invalid directory exit')
+        print(target_dir + 'is an invalid directory, exit')
         exit()
 
 
@@ -50,7 +49,7 @@ for subdir in sub_target_dirs:
         try:
             Repo(directory)
         except:
-            logWarning(subdir + " is not a valid git repo, skipping")
+            logWarning(subdir + "is not a valid git repo, skipping")
             continue
 
         repo = Repo(directory)
@@ -59,7 +58,7 @@ for subdir in sub_target_dirs:
         try:
             repo.iter_commits()
         except:
-            logWarning(subdir, " has no commits yet, skipping")
+            logWarning(subdir + "has no commits yet, skipping")
             continue
 
         commits = list(repo.iter_commits())

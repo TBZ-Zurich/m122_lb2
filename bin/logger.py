@@ -27,7 +27,7 @@ def logInformation(information):
 
 
 def logWarning(warning):
-    logString = "WARN   : " + warning
+    logString = "WARN: " + warning
 
     print(logString)
     logger.info(logString)
