@@ -1,10 +1,10 @@
 #! /bin/python3
-from re import sub
+
 from git import Repo
 import csv
 import os
 import argparse
-from looger import logInformation
+from logger import logInformation, logWarning
 
 
 FIELDS = ["Zielverzeichnis", "Datum", "Commit-Hash", "Author"]
@@ -50,8 +50,7 @@ for subdir in sub_target_dirs:
         try:
             Repo(directory)
         except:
-            print(subdir, "is not a valid git repo, skipping")
-            logInformation(subdir + " is not a valid git repo, skipping")
+            logWarning(subdir + " is not a valid git repo, skipping")
             continue
 
         repo = Repo(directory)
@@ -60,7 +59,7 @@ for subdir in sub_target_dirs:
         try:
             repo.iter_commits()
         except:
-            print(subdir, " has no commits yet, skipping")
+            logWarning(subdir, " has no commits yet, skipping")
             continue
 
         commits = list(repo.iter_commits())
@@ -76,3 +75,5 @@ with open(str(OUTPUT_LOCATION), 'w') as csvfile:
     csvwriter.writerow(FIELDS)
 
     csvwriter.writerows(rows)
+
+logInformation('FILE SAVED ')
