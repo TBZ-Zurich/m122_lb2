@@ -2,17 +2,26 @@
 [[_TOC_]]
 ## Einführungstext 
 
-TODO: In 2-3 Sätzen beschreiben was die Skripte grundsaetzlich tun.
+This script clones all repositories if they are not present. If they are present, the corresponding repository is fetched.
+
+TODO: @Loris
 
 ## Installationsanleitung für Administratoren
 
 ### Installation
 
-TODO: Wie ist das skript zu installieren. (z.B. apt-get install ... oder tar xvf .... oder ...)
+Install the scripts with this command: 
+`git clone https://github.com/TBZ-Zurich/m122_lb2.git`
+
+Please make sure that git is installed on your device!
+
+Now you can go inside the cloned folder. go into the bin folder and install the requirements.txt file with pip. 
+
+`pip install -r requirements.txt`
 
 ### Konfiguration
 
-TODO: Beschreibung der Konfigurationsfiles (Beispiel-Files erstellen im Repo)
+There is a gitclone.config.smapel config file inside. the config file must be at the same directory.
 
 TODO: Wie ist ein allfaelliger Cronjob einzurichten
 
