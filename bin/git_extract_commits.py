@@ -74,3 +74,5 @@ with open(str(OUTPUT_LOCATION), 'w') as csvfile:
     csvwriter.writerow(FIELDS)
 
     csvwriter.writerows(rows)
+
+logInformation("successfully saved the logs to csv")
