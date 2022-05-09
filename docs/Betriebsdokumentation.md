@@ -23,6 +23,10 @@ Now you can go inside the cloned folder. Go into the bin folder and install git 
 
 `pip install GitPython`
 
+### Script 2
+`git clone https://github.com/TBZ-Zurich/m122_lb2.git && cd m122_lb2/bin/`
+`python3 git_extract_commits.py -d <path-to-dir-with-git-dirs>`
+
 ### Konfiguration
 
 There is a gitclone.config.sample config file inside. The config file must be at the same directory as the script (git_clone_update_repos.py).
