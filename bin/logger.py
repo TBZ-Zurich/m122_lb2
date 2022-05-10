@@ -1,7 +1,7 @@
 import logging
 
 # Create and configure logger
-logging.basicConfig(filename="git-tool.log",
+logging.basicConfig(filename="newfile.log",
                     format='%(asctime)s %(message)s',
                     filemode='w')
 
